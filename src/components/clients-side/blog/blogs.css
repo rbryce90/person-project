@@ -1,0 +1,21 @@
+.blogs img {
+    height: 100px;
+}
+.blogs {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+}
+.blogs h1 {
+    font-size: 30px;
+}
+.singleBlog {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 30px;
+}
+
+.singleBlog h1{
+    font-size: 40px;
+}

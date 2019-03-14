@@ -1,0 +1,7 @@
+.about {
+    border-bottom: 1px;
+    border-style: solid;
+}
+.about > h1 {
+    font-size: 34px;
+}
