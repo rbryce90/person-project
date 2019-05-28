@@ -1,2 +1,7 @@
-select * from blogs 
-where blog_id = $1;
+SELECT
+    *
+FROM
+    blogs
+WHERE
+    blog_id = $1;
+

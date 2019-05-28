@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import './welcome.css'
+import "./welcome.css";
 
 export class Welcome extends Component {
   constructor() {
@@ -25,8 +25,12 @@ export class Welcome extends Component {
   render() {
     let { weather, temp } = this.state;
     return (
-      <div className='welcome'>
-        <h1> Welcome to nottherealtorforyou.com, although we are not Realtor's, this blog is all about Real Estate in Phoenix. Currently, the weather in {weather.name} is {temp} degrees! </h1> <br />
+      <div className="welcome">
+        <h1> Welcome to Bryce's Blog</h1>
+        <h1>
+          Currently, the weather in {weather.name} is {temp} degrees!{" "}
+        </h1>{" "}
+        <br />
       </div>
     );
   }

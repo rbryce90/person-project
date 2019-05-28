@@ -1,2 +1,7 @@
-select * from users
-where admin = false; 
+SELECT
+    *
+FROM
+    users
+WHERE
+    admin = FALSE;
+

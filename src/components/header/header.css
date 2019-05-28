@@ -10,18 +10,17 @@
     margin: 6px 0;
 }
 
-.top > h1 {
+.top>h1 {
     height: 50px;
     width: 200px;
     color: white;
     display: flex;
     align-items: center;
-   
     white-space: nowrap;
 }
 
-.header > div {
-    width: 85%;
+.header>div {
+    width: 90%;
     height: 100%;
     display: flex;
     margin: 0 auto;
@@ -33,7 +32,7 @@
     align-items: center;
 }
 
-.header > div > ol > div > li {
+.header>div>ol>div>li {
     font-size: 24px;
     text-decoration: none;
     margin-top: 15px;
@@ -48,40 +47,43 @@
         display: flex;
         flex-direction: row;
     }
-    .header > div {
+
+    .header>div {
         flex-direction: row;
         justify-content: space-between;
     }
 
-    .header > div > ol {
+    .header>div>ol {
         display: flex;
         flex-direction: row;
     }
 
-    .header > div > ol > div {
+    .header>div>ol>div {
         display: flex;
         flex-direction: row;
     }
 
-    .header > div > ol > div >  li {
+    .header>div>ol>div>li {
         margin-right: 10px;
     }
 
     .top button {
         display: none
     }
-    .header > div > ol {
+
+    .header>div>ol {
         display: flex;
         flex-direction: row;
         align-items: center;
     }
-    .top h1{
+
+    .top h1 {
         font-size: 35px;
     }
 }
 
 @media (max-width: 699px) {
-    .top > button {
+    .top>button {
         background: white;
         width: 51px;
     }
@@ -90,21 +92,26 @@
         background: black;
         height: 100%;
     }
-    .header > div {
+
+    .header>div {
         flex-direction: column;
     }
-    .show  {
+
+    .show {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+
     .hide {
         display: none;
     }
-    .top > h1 {
+
+    .top>h1 {
         font-size: 22px;
     }
-    .header > div > ol > div > li {
+
+    .header>div>ol>div>li {
         font-size: 18px;
     }
 }

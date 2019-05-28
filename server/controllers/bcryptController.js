@@ -1,10 +1,10 @@
 const bcrypt = require("bcrypt");
 const saltRounds = 12;
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-require("dotenv").config();
+// const accountSid = process.env.TWILIO_ACCOUNT_SID;
+// const authToken = process.env.TWILIO_AUTH_TOKEN;
+// require("dotenv").config();
 
-const client = require("twilio")(accountSid, authToken);
+// const client = require("twilio")(accountSid, authToken);
 
 module.exports = {
   encryptPassword: (req, res, next) => {
@@ -41,11 +41,11 @@ module.exports = {
               " their phone number is " +
               phone_number;
             req.session.user = newUser[0];
-            client.messages.create({
-              to: "+14093387520",
-              from: "+14092455543",
-              body: message
-            });
+            // client.messages.create({
+            //   to: "+14093387520",
+            //   from: "+14092455543",
+            //   body: message
+            // });
 
             res.status(200).json(req.session.user);
           })
@@ -70,9 +70,12 @@ module.exports = {
     db.find_user(username).then(user => {
       if (user.length) {
         bcrypt.compare(password, user[0].password).then(passwordMatch => {
-          if (passwordMatch && user[0].username == "admin1" || passwordMatch && user[0].username == "bigboyshawnboy") {
+          if (
+            (passwordMatch && user[0].username === "admin1") ||
+            (passwordMatch && user[0].username === "bigboyshawnboy")
+          ) {
             req.session.user = {
-              username: user[0].username, 
+              username: user[0].username,
               admin: true,
               user_id: user[0].user_id
             };
@@ -89,7 +92,7 @@ module.exports = {
           }
         });
       } else {
-        resc
+        res
           .status(403)
           .json({ message: "Idont know know who that is!!! get outta here!" });
       }

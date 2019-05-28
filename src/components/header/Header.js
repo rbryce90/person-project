@@ -18,7 +18,7 @@ export class Header extends Component {
       <div className="header">
         <div>
           <div className="top">
-            <h1>Not the Realtor for You</h1>
+            <h1>Bryce's Blog</h1>
             <button
               onClick={() =>
                 toggleNav === false

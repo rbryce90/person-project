@@ -18,14 +18,12 @@ app.use(
   })
 );
 
-app.use( express.static( `${__dirname}/../build` ) );
-
+app.use(express.static(`${__dirname}../build`));
 
 massive(process.env.CONNECTION_STRING).then(db => {
   app.set("db", db);
   console.log("connected to db");
 });
-
 
 app.get("/api/users", clientController.getUsers);
 
@@ -33,9 +31,9 @@ app.get("/api/admins", adminController.getAdmins);
 
 app.get("/api/blogs", blogController.adminBlog);
 app.get("/api/blog/:blog_id", blogController.getBlog);
-app.post('/api/blog', blogController.postBlog);
-app.delete('/api/blog/:blog_id', blogController.deleteBlog);
-app.put('/api/blog/:blog_id/:blog_body', blogController.updateBlog);
+app.post("/api/blog", blogController.postBlog);
+app.delete("/api/blog/:blog_id", blogController.deleteBlog);
+app.put("/api/blog/:blog_id/:blog_body", blogController.updateBlog);
 
 app.post("/register", bcryptController.encryptPassword);
 app.post("/login", bcryptController.loginUser);
@@ -91,7 +89,7 @@ app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
 
-const path = require('path')
-app.get('*', (req, res)=>{
-  res.sendFile(path.join(__dirname, '../build/index.html'));
-})
+const path = require("path");
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build/index.html"));
+});
