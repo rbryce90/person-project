@@ -1,7 +1,18 @@
 .welcome {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        position: absolute;
-        align-items: center;
+        background-image: url('../../../../media/abstract.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        min-height: 80vh;
+        padding: 50px;
+}
+
+.welcome h1 {
+        font-size: 7vw;
+        white-space: nowrap
+}
+
+.welcome p {
+        font-size: 3.5vw;
+        line-height: 60px;
 }

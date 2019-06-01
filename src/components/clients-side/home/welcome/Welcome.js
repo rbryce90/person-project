@@ -1,35 +1,19 @@
 import React, { Component } from "react";
-import axios from "axios";
 import "./welcome.css";
 
 export class Welcome extends Component {
-  constructor() {
-    super();
-    this.state = {
-      weather: [],
-      temp: ""
-    };
-  }
-  componentDidMount() {
-    axios
-      .get(
-        "http://api.openweathermap.org/data/2.5/weather?zip=85003&APPID=c297a5a7fe855de9c8f9e2fc267941bd&units=imperial"
-      )
-      .then(response => {
-        this.setState({
-          weather: response.data,
-          temp: response.data.main.temp
-        });
-      });
-  }
   render() {
-    let { weather, temp } = this.state;
     return (
       <div className="welcome">
-        <h1> Welcome to Bryce's Blog</h1>
-        <h1>
-          Currently, the weather in {weather.name} is {temp} degrees!{" "}
-        </h1>{" "}
+        <h1> Lorem, ipsum dolor.</h1>
+        <br />
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam
+          molestias alias, quis aperiam recusandae quasi officia necessitatibus
+          quam, nihil aut rerum ipsum enim mollitia reprehenderit maxime dolores
+          quos. A expedita, voluptate unde dolore laborum minima quia odit ex
+          commodi repellat, neque quibusdam fugit ea rem molestias?
+        </p>{" "}
         <br />
       </div>
     );

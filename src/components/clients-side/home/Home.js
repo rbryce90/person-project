@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { userFn } from "../../../ducks/reducer";
 import Welcome from "./welcome/Welcome";
-import Mozart from "../../../media/IMG_2713.jpeg";
-import "./home.css";
+import Register from "../../form/register/Register";
 import axios from "axios";
 
 export class Home extends Component {
@@ -34,38 +32,16 @@ export class Home extends Component {
   };
 
   render() {
-    console.log();
-    console.log(this.props.userObj.user.length);
-    return (
-      <div className="home" style={{ backgroundColor: "rgb(209, 209, 209" }}>
-        {this.props.userObj.user.length === 0 ? (
-          <form onSubmit={e => e.preventDefault()}>
-            <h1>Username: </h1>
-            <input type="text" ref="username" />
-            <h1>Password: </h1>
-            <input type="password" ref="password" />
-            <input type="submit" value="Log In" onClick={this.login} />
-          </form>
-        ) : (
-          <Welcome />
-        )}
-        <img src={Mozart} alt="placeholder" />
-      </div>
-    );
+    let { user } = this.props.userObj;
+    return <div className="home">{user ? <Welcome /> : <Register />}</div>;
   }
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     userObj: state
   };
 };
 
-const mapDispatchToProps = {
-  userFn: userFn
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Home);
+export default connect(mapStateToProps)(Home);

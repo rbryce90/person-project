@@ -6,6 +6,7 @@ const clientController = require("./controllers/clientContoller");
 const bcryptController = require("./controllers/bcryptController");
 const adminController = require("./controllers/adminController");
 const blogController = require("../server/controllers/blogController");
+const stripeController = require("./controllers/stripeController");
 const app = express();
 require("dotenv").config();
 
@@ -14,7 +15,10 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 14
+    }
   })
 );
 
@@ -38,50 +42,22 @@ app.put("/api/blog/:blog_id/:blog_body", blogController.updateBlog);
 app.post("/register", bcryptController.encryptPassword);
 app.post("/login", bcryptController.loginUser);
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+app.post("/api/stripe", stripeController.useStripe);
 
-app.post("/api/stripe", (req, res) => {
-  const stripeToken = req.body;
-  // const stripeToken = req.body.body;
-  console.log(stripeToken);
-  stripe.charges.create(
-    {
-      amount: 1000,
-      currency: "usd",
-      description: "Example Charge",
-      source: stripeToken.body
-      // source: stripeToken.id
-    },
-    function(err, charge) {
-      console.log("charge", charge);
-      if (err) {
-        res.send({
-          success: false,
-          message: "Error"
-        });
-      } else {
-        res.send({
-          success: true,
-          message: "Success"
-        });
-      }
-    }
-  );
-});
+// function ensureLoggedIn(req, res, next) {
+//   if (req.session.user) {
+//     console.log(req.session.user);
+//     next();
+//   } else {
+//     res.status(403).json({ message: "You are not authorized" });
+//   }
+// }
 
-function ensureLoggedIn(req, res, next) {
-  if (req.session.user) {
-    next();
-  } else {
-    res.status(403).json({ message: "You are not authorized" });
-  }
-}
+// app.get("/secure-data", ensureLoggedIn, (req, res) => {
+//   res.json({ someSecureData: 123 });
+// });
 
-app.get("/secure-data", ensureLoggedIn, (req, res) => {
-  res.json({ someSecureData: 123 });
-});
-
-app.get("/", (req, res) => res.status(200).json("its working"));
+app.get("/", (req, res) => res.status(200).json({ reqSession: req.session }));
 
 const port = 4000;
 

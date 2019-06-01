@@ -1,8 +1,11 @@
+require("dotenv").config();
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+
 module.exports = {
   useStripe: (req, res) => {
     const stripeToken = req.body;
     // const stripeToken = req.body.body;
-    console.log(stripeToken);
+    // console.log(stripeToken);
     stripe.charges.create(
       {
         amount: 1000,

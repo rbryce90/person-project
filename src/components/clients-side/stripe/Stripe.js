@@ -1,7 +1,7 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
-import './stripe.css';
+import "./stripe.css";
 
 export default class Stripe extends React.Component {
   onToken = token => {
@@ -23,7 +23,7 @@ export default class Stripe extends React.Component {
 
   render() {
     return (
-      <div className='stripe'>
+      <div className="stripe">
         <h1 style={{ width: "80%", margin: "0 auto", fontSize: "44px" }}>
           Donate to our site so we can keep making content for you!
         </h1>

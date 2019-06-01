@@ -1,6 +1,12 @@
-.header {
+header {
     background: black;
     height: 100%;
+    padding: 30px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center
 }
 
 .bar {
@@ -8,110 +14,4 @@
     height: 5px;
     background-color: black;
     margin: 6px 0;
-}
-
-.top>h1 {
-    height: 50px;
-    width: 200px;
-    color: white;
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-}
-
-.header>div {
-    width: 90%;
-    height: 100%;
-    display: flex;
-    margin: 0 auto;
-}
-
-.top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header>div>ol>div>li {
-    font-size: 24px;
-    text-decoration: none;
-    margin-top: 15px;
-    margin-bottom: 5px;
-}
-
-
-
-@media (min-width: 700px) {
-    .menu ol {
-        background: yellow;
-        display: flex;
-        flex-direction: row;
-    }
-
-    .header>div {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .header>div>ol {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .header>div>ol>div {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .header>div>ol>div>li {
-        margin-right: 10px;
-    }
-
-    .top button {
-        display: none
-    }
-
-    .header>div>ol {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .top h1 {
-        font-size: 35px;
-    }
-}
-
-@media (max-width: 699px) {
-    .top>button {
-        background: white;
-        width: 51px;
-    }
-
-    .header {
-        background: black;
-        height: 100%;
-    }
-
-    .header>div {
-        flex-direction: column;
-    }
-
-    .show {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .hide {
-        display: none;
-    }
-
-    .top>h1 {
-        font-size: 22px;
-    }
-
-    .header>div>ol>div>li {
-        font-size: 18px;
-    }
 }
