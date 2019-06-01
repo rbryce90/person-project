@@ -8,7 +8,6 @@ export class Register extends Component {
   constructor() {
     super();
     this.state = {
-      user: null,
       message: null
     };
   }
@@ -44,6 +43,7 @@ export class Register extends Component {
       //   this.setState({ user: response.data });
       // })
       .then(response => {
+        console.log("response.data ===>", response.data);
         this.props.userFn(response.data);
       })
       .catch(error => {
@@ -55,7 +55,6 @@ export class Register extends Component {
   };
 
   render() {
-    console.log(this.state.user);
     return (
       <form
         className="register"
@@ -66,7 +65,7 @@ export class Register extends Component {
       >
         {/* onSubmit={e => e.preventDefault()} */}
         <h1>Register</h1>
-        <h3>This will be a catch phrase</h3>
+        <h3>Lorem ipsum dolor sit amet.</h3>
         <input ref="firstName" type="text" placeholder="First Name" />
         <input type="text" ref="lastName" placeholder="Last Name" />
         <input type="text" ref="phoneNumber" placeholder="Phone Number" />
@@ -78,7 +77,7 @@ export class Register extends Component {
           ref="password"
           placeholder="Password"
         />
-        <input type="submit" />
+        <input id="reg-button" type="submit" placeholder="Create Account" />
       </form>
     );
   }

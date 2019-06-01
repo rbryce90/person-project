@@ -5,6 +5,6 @@ SELECT
 FROM
     users
 WHERE
-    username = $3
+    username = $5
 LIMIT 1;
 

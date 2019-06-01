@@ -11,7 +11,6 @@ module.exports = {
     console.log("hit");
     console.log("encryptPassword", req, res);
     const db = req.app.get("db");
-    console.log("hit -1");
     const {
       first_name,
       last_name,
@@ -23,7 +22,6 @@ module.exports = {
     bcrypt
       .hash(password, saltRounds)
       .then(hashedPassword => {
-        console.log("hit - 2");
         db.create_user([
           first_name,
           last_name,
@@ -58,7 +56,6 @@ module.exports = {
             res.status(200).json(req.session.user);
           })
           .catch(error => {
-            console.log(error);
             if (error.message.match(/duplicate key/)) {
               res.status(409).json({ message: "That user already exists" });
             } else {
@@ -74,7 +71,6 @@ module.exports = {
 
   loginUser: (req, res) => {
     const db = req.app.get("db");
-    console.log("loginUser");
     const { username, password } = req.body;
     db.find_user(username).then(user => {
       console.log("Login user====>", user);

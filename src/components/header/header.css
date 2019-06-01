@@ -9,9 +9,9 @@ header {
     align-items: center
 }
 
-.bar {
-    width: 35px;
-    height: 5px;
-    background-color: black;
-    margin: 6px 0;
+.logo {
+    color: white;
+    text-decoration: none;
+    font-size: 5vw;
+
 }

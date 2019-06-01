@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import HambergerBtn from "./hamburgerBtn/HambergerBtn";
+// import HamburgerBtn from "./hamburgerBtn/HamburgerBtn";
 import NavMenu from "./navMenu/NavMenu";
 import Login from "../form/login/Login";
 import "./header.css";
@@ -31,8 +31,10 @@ export class Header extends Component {
     console.log(user);
     return (
       <header>
-        <Link to="/">Lorem</Link>
-        {/* <HambergerBtn /> */}
+        <Link to="/" className="logo">
+          Lorem
+        </Link>
+        {/* <HamburgerBtn /> */}
         {user ? <NavMenu /> : <Login />}
       </header>
     );

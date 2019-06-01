@@ -19,9 +19,7 @@ class Login extends Component {
       : error.message;
 
   login = () => {
-    console.log("login");
     this.setState({ message: null });
-    console.log("hit");
     axios
       .post("/login", {
         username: this.refs.username.value,

@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import Welcome from "./welcome/Welcome";
 import Register from "../../form/register/Register";
 import axios from "axios";
+import LandingContent from "./landingContent/LandingContent";
+import "./home.css";
 
 export class Home extends Component {
   getMessage = error =>
@@ -33,7 +35,18 @@ export class Home extends Component {
 
   render() {
     let { user } = this.props.userObj;
-    return <div className="home">{user ? <Welcome /> : <Register />}</div>;
+    return (
+      <div className="home">
+        {user ? (
+          <Welcome />
+        ) : (
+          <div className="landing">
+            <LandingContent />
+            <Register />
+          </div>
+        )}
+      </div>
+    );
   }
 }
 

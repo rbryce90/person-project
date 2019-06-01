@@ -1,12 +1,12 @@
 .register {
-    background: white;
     width: 300px;
-    /* background: red; */
     height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    margin-top: 40px;
+    align-items: center;
+    margin-top: 60px;
+
 }
 
 .register h1 {
@@ -26,30 +26,32 @@ h3 {
 }
 
 .register>input {
-    box-shadow: 0 8px 6px -10px;
+    box-shadow: 0 0px 6px -10px;
     font-size: 12pt;
+    width: 250px;
 }
 
 #register-password,
 .register>input[type=text] {
-    height: 60px;
     border-radius: 3px;
     padding: 10px;
 }
 
-
-
-.register input[type="submit"] {
+#reg-button {
     width: 200px;
-    height: 40px;
-    border: none;
-    border-color: tomato;
+    border: tomato;
     background-color: tomato;
-    color: white;
-    margin-left: 30px;
+    height: 500px;
+    padding: 5px;
+    text-align: center;
+    font-size: 22pt;
 }
 
-.register input[type="submit"]:hover {
+#reg-button::placeholder {
+    color: white
+}
+
+#reg-button:hover {
     cursor: pointer;
-    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.65);
+    box-shadow: 0 0 10px -6px rgba(0, 0, 0, 0.65);
 }

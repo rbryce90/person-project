@@ -26,10 +26,11 @@ app.use(express.static(`${__dirname}../build`));
 
 massive(process.env.CONNECTION_STRING).then(db => {
   app.set("db", db);
+  db.init();
   console.log("connected to db");
 });
 
-app.get("/api/users", clientController.getUsers);
+app.get("/api/users", ensureAdmin, clientController.getUsers);
 
 app.get("/api/admins", adminController.getAdmins);
 
@@ -44,18 +45,13 @@ app.post("/login", bcryptController.loginUser);
 
 app.post("/api/stripe", stripeController.useStripe);
 
-// function ensureLoggedIn(req, res, next) {
-//   if (req.session.user) {
-//     console.log(req.session.user);
-//     next();
-//   } else {
-//     res.status(403).json({ message: "You are not authorized" });
-//   }
-// }
-
-// app.get("/secure-data", ensureLoggedIn, (req, res) => {
-//   res.json({ someSecureData: 123 });
-// });
+function ensureAdmin(req, res, next) {
+  if (req.session.user.admin === true) {
+    next();
+  } else {
+    res.status(403).json({ message: "You are not authorized" });
+  }
+}
 
 app.get("/", (req, res) => res.status(200).json({ reqSession: req.session }));
 
