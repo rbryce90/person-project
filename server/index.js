@@ -36,7 +36,7 @@ app.get("/api/admins", adminController.getAdmins);
 
 app.get("/api/blogs", blogController.adminBlog);
 app.get("/api/blog/:blog_id", blogController.getBlog);
-app.post("/api/blog", blogController.postBlog);
+app.post("/api/blog", ensureAdmin, blogController.postBlog);
 app.delete("/api/blog/:blog_id", blogController.deleteBlog);
 app.put("/api/blog/:blog_id/:blog_body", blogController.updateBlog);
 

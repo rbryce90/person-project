@@ -23,6 +23,7 @@ export class Clients extends Component {
   render() {
     let { users } = this.state;
     console.log(users);
+    console.log(this.state.userObj);
     let mappedUsers = users.map(user => {
       return (
         <tr key={user.id}>
@@ -37,21 +38,17 @@ export class Clients extends Component {
 
     return (
       <div>
-        {this.props.userObj.admin === false ? (
-          <Home />
-        ) : (
-          <div>
-            <AdminMenu />
-            <table>
-              <tr>
-                <td>Name</td>
-                <td>Phone Number</td>
-                <td>Email</td>
-              </tr>
-              {mappedUsers}
-            </table>
-          </div>
-        )}
+        <div>
+          <AdminMenu />
+          <table>
+            <tr>
+              <td>Name</td>
+              <td>Phone Number</td>
+              <td>Email</td>
+            </tr>
+            {mappedUsers}
+          </table>
+        </div>
       </div>
     );
   }
