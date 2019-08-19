@@ -1,0 +1,64 @@
+.register {
+    width: 300px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 60px;
+
+}
+
+.register h1 {
+    font-size: 50px;
+}
+
+.register h1,
+.register h3 {
+    margin-left: 20px
+}
+
+.register input,
+h1,
+h3 {
+    margin: 10px;
+
+}
+
+.register>input {
+    box-shadow: 0 0px 6px -10px;
+    font-size: 12pt;
+    width: 250px;
+}
+
+#register-password,
+.register>input[type=text] {
+    border-radius: 3px;
+    padding: 10px;
+}
+
+#reg-button {
+    width: 200px;
+    border: tomato;
+    background-color: tomato;
+    height: 500px;
+    padding: 5px;
+    text-align: center;
+    font-size: 22pt;
+}
+
+#reg-button::placeholder {
+    color: white
+}
+
+#reg-button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px -6px rgba(0, 0, 0, 0.65);
+}
+
+@media (max-width: 700px){
+    .register {
+       width:80%;
+       margin: 10%;
+    }
+}

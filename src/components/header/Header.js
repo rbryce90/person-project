@@ -1,118 +1,53 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import NavMenu from "./navMenu/NavMenu";
+import Login from "../form/login/Login";
+import HamburgerBtn from "./hamburgerBtn/HamburgerBtn";
 import "./header.css";
 
 export class Header extends Component {
   constructor() {
     super();
     this.state = {
-      toggleNav: false
+      toggleNav: true,
     };
   }
-  render() {
+
+  toggleNavFnc = () => {
     let { toggleNav } = this.state;
-    let { user, admin } = this.props.userObj;
+    toggleNav === false
+      ? this.setState({
+          toggleNav: true,
+        })
+      : this.setState({
+          toggleNav: false,
+        });
+  };
+
+  render() {
+    let { user } = this.props.userObj;
+    let { toggleNav } = this.state;
     console.log(toggleNav);
     return (
-      <div className="header">
-        <div>
-          <div className="top">
-            <h1>Not the Realtor for You</h1>
-            <button
-              onClick={() =>
-                toggleNav === false
-                  ? this.setState({
-                      toggleNav: true
-                    })
-                  : this.setState({
-                      toggleNav: false
-                    })
-              }
-            >
-              <div className="bar" />
-              <div className="bar" />
-              <div className="bar" />
-            </button>
-          </div>
-          <ol className={toggleNav === false ? "hide" : "show"}>
-            <div>
-              <li>
-                <Link style={{ textDecoration: "none", color: "white" }} to="/">
-                  Home
-                </Link>
-              </li>
-            </div>
-            {user.length === 0 ? (
-              <div>
-                <li>
-                  <Link
-                    style={{ textDecoration: "none", color: "white" }}
-                    to="/register"
-                  >
-                    Register
-                  </Link>
-                </li>
-              </div>
-            ) : null}
-            {user.length !== 0 ? (
-              <div>
-                <li>
-                  <Link
-                    style={{ textDecoration: "none", color: "white" }}
-                    to="/blogs"
-                  >
-                    Blogs
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    style={{ textDecoration: "none", color: "white" }}
-                    to="/about"
-                  >
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    style={{ textDecoration: "none", color: "white" }}
-                    to="/contact"
-                  >
-                    Contact
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    style={{ textDecoration: "none", color: "white" }}
-                    to="/stripe"
-                  >
-                    Donate
-                  </Link>
-                </li>
-              </div>
-            ) : null}
-            {admin === true ? (
-              <div>
-                <li>
-                  <Link
-                    style={{ textDecoration: "none", color: "white" }}
-                    to="/dashboard/clients"
-                  >
-                    Admin
-                  </Link>
-                </li>
-              </div>
-            ) : null}
-          </ol>
+      <header>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <Link to="/" className="logo">
+            Lorem
+          </Link>
+          {user ? <HamburgerBtn toggleNav={this.toggleNavFnc} /> : null}
         </div>
-      </div>
+        {!user ? <Login /> : null}
+        {toggleNav === true ? null : <NavMenu />}
+      </header>
     );
   }
 }
 
 const mapStateToProps = state => {
+  console.log("state===> ", state);
   return {
-    userObj: state
+    userObj: state,
   };
 };
 

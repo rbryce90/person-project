@@ -1,17 +1,18 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
-import {userFn} from '../../../ducks/reducer';
-import Welcome from './welcome/Welcome'
-import "./home.css";
+import { connect } from "react-redux";
+import Welcome from "./welcome/Welcome";
+import Register from "../../form/register/Register";
 import axios from "axios";
+import LandingContent from "./landingContent/LandingContent";
+import "./home.css";
 
 export class Home extends Component {
   getMessage = error =>
-  error.response
-    ? error.response.data
-      ? error.response.data.message
-      : JSON.stringify(error.response.data, null, 2)
-    : error.message;
+    error.response
+      ? error.response.data
+        ? error.response.data.message
+        : JSON.stringify(error.response.data, null, 2)
+      : error.message;
 
   login = () => {
     this.setState({ message: null });
@@ -33,36 +34,27 @@ export class Home extends Component {
   };
 
   render() {
-    console.log()
-    console.log(this.props.userObj.user.length)
+    let { user } = this.props.userObj;
     return (
-      <div className="home"  style={{backgroundColor: 'rgb(209, 209, 209'}} >
-        {this.props.userObj.user.length === 0 ? <form onSubmit={e => e.preventDefault()}>
-          <h1>Username: </h1>
-          <input type="text" ref="username" />
-          <h1>Password: </h1>
-          <input type="password" ref="password" />
-          <input type="submit" value="Log In" onClick={this.login} />
-        </form> : <Welcome/>}
-        <img
-          src="https://marketplace.canva.com/MADGyYVoY2c/4/screen/canva-aerial-photography-of-cityscape-MADGyYVoY2c.jpg"
-          alt="placeholder"
-        />
+      <div className="home">
+        {user ? (
+          <Welcome />
+        ) : (
+          <div className="landing">
+            <LandingContent />
+            <Register />
+          </div>
+        )}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     userObj: state
-  }
+  };
 };
 
-const mapDispatchToProps = {
-  userFn: userFn  
-};
-
-
-export default connect(mapStateToProps,
-  mapDispatchToProps)(Home);
+export default connect(mapStateToProps)(Home);

@@ -1,0 +1,45 @@
+.login {
+    display: flex;
+    align-items: center;
+}
+
+.login div {
+    display: flex;
+    flex-direction: column;
+    margin: 2px;
+    padding: 5px;
+}
+
+.login label {
+    margin-bottom: 2px;
+}
+
+.login input[type="text"],
+.login input[type="password"] {
+    padding: 5px;
+    font-size: 12pt;
+}
+
+.login input[type="submit"] {
+    height: 34px;
+    margin-top: 17px;
+    border: #970101;
+    background-color: #970101;
+    color: white;
+}
+
+.login input[type="submit"]:hover {
+    cursor: pointer;
+}
+
+
+@media(max-width: 700px){
+    .login { 
+        display: block;
+        width: 80%;
+        margin-left: 10%;
+    }
+    .login input[type="submit"] {
+        width: 90%;
+    }
+}

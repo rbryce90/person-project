@@ -1,0 +1,15 @@
+.landing-welcome {
+    width: 1000px;
+}
+
+
+.landing-welcome>h1 {
+    font-size: 6vw;
+    text-align: center;
+}
+
+.landing-welcome>p {
+    padding: 20px;
+    line-height: 37px;
+    text-align: justify;
+}

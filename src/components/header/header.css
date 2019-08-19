@@ -1,110 +1,59 @@
-.header {
+header {
     background: black;
     height: 100%;
-}
-
-.bar {
-    width: 35px;
-    height: 5px;
-    background-color: black;
-    margin: 6px 0;
-}
-
-.top > h1 {
-    height: 50px;
-    width: 200px;
     color: white;
     display: flex;
-    align-items: center;
-   
-    white-space: nowrap;
-}
-
-.header > div {
-    width: 85%;
-    height: 100%;
-    display: flex;
-    margin: 0 auto;
-}
-
-.top {
-    display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding: 10px;
 }
 
-.header > div > ol > div > li {
-    font-size: 24px;
-    text-decoration: none;
-    margin-top: 15px;
-    margin-bottom: 5px;
+.logo {
+    color: white;
+    text-decoration: none;  
+    font-size: 50px;
+}
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.hamburger {
+    display: none;
+}
+
+.red {
+    background: red
+}
+
+header ol {
+    display: flex;
+    flex-direction: row;
+    font-size: 20pt;
+}
+header li {
+    margin-right: 10px;
 }
 
 
-
-@media (min-width: 700px) {
-    .menu ol {
-        background: yellow;
+@media(max-width: 700px){
+    header {
+        display: block;
+        text-align: center;
+        padding:10px;
+    }
+    header ol {
         display: flex;
-        flex-direction: row;
-    }
-    .header > div {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .header > div > ol {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .header > div > ol > div {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .header > div > ol > div >  li {
-        margin-right: 10px;
-    }
-
-    .top button {
-        display: none
-    }
-    .header > div > ol {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-    .top h1{
-        font-size: 35px;
-    }
-}
-
-@media (max-width: 699px) {
-    .top > button {
-        background: white;
-        width: 51px;
-    }
-
-    .header {
-        background: black;
-        height: 100%;
-    }
-    .header > div {
         flex-direction: column;
     }
-    .show  {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    nav {
+        justify-content: center
     }
-    .hide {
-        display: none;
+    .hamburger {
+        display: block;
     }
-    .top > h1 {
-        font-size: 22px;
-    }
-    .header > div > ol > div > li {
-        font-size: 18px;
-    }
+    
 }
